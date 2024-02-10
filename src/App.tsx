@@ -7,10 +7,11 @@ function App() {
   const [phrase, setPhrase] = useState();
 
   async function getData() {
-    const api = await fetch(`https://api.quotable.io/random`);
+    const api = await fetch(`https://type.fit/api/quotes`);
     const data = await api.json();
-    setAuthor(data.author);
-    setPhrase(data.content);
+    const aleatoryNumber = Math.floor(Math.random() * 15);
+    setAuthor(data[aleatoryNumber].author);
+    setPhrase(data[aleatoryNumber].text);
   }
   useEffect(() => {
     getData();
